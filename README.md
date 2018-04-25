@@ -1,4 +1,4 @@
-# Create React Express App
+# Create React Express Application
 
 ## About This Boilerplate
 
