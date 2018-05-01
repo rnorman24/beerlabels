@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "beer-labels",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Project 3",
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
@@ -17,6 +17,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16"
   }
 }
