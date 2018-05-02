@@ -9,4 +9,3 @@ function pageRandomizer(pages) {
   }
 }
 
-module.exports pageRandomizer;

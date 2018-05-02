@@ -1,36 +1,27 @@
-import React, { Component } from 'react';
-const axios = require('axios');
+import React, { Component } from "react";
+const axios = require("axios");
 
-class Background extends Component {
+class SplashLabel extends Component {
   state = {
-    imageUrl: [],
+    imageUrl: []
   };
 
+  componentDidMount() {
+    axios.get("/api/splashLabels").then(res => {
+      console.log("This is res: ", res);
+      this.setState({ imageUrl: res.data });
+    });
+  }
 
-componentDidMount() {
-
-  axios.get(
-    '/api/splashLabels'
-  )
-  .then(
-    (res) => {
-      console.log('This is res: ', res);
-      this.setState({imageUrl: res.data})
-    }
-  )
+  render() {
+    return (
+      <div className="label-container">
+        {this.state.imageUrl.map(item => (
+          <img src={item.imageUrl} key={item._id} alt={item["_id"]} />
+        ))}
+      </div>
+    );
+  }
 }
 
-render() {
-  return (
-
-    <div className='label-container'>
-    {this.state.imageUrl.map(item => (
-        <img src={item.imageUrl} key={item._id} alt={item['_id']} />
-    ))}
-    </div>
-   
-  )
-}
-}
-
-export default Background;
+export default SplashLabel;
