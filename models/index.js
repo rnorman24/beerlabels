@@ -1,4 +1,5 @@
 module.exports = {
   SplashLabel: require('./SplashLabel'),
-  Label: require('./Label')
+  Label: require('./Label'),
+  User: require('./User')
 }

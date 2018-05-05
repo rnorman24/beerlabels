@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './SplashLabel.css';
 const axios = require("axios");
 
 class SplashLabel extends Component {
@@ -23,5 +24,13 @@ class SplashLabel extends Component {
     );
   }
 }
-
+/*
+const SplashLabel = props => (
+  <div className="label-container">
+  {this.state.imageUrl.map(item => (
+    <img src={item.imageUrl} key={item._id} alt={item["_id"]} />
+  ))}
+</div>
+);
+*/
 export default SplashLabel;
