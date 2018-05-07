@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Card,
   CardImg,
@@ -8,18 +8,31 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
+import InfoModal from '../InfoModal';
+import "./BeerLabelItem.css";
 
-const BeerLabelItem = ({ label }) => {
+const BeerLabelItem = ({ name, medium, id, handleClick, buttonText, buttonLabel, brewery, description, abv, available, website }) => {
   return (
-    <Card>
-      <CardTitle>
-        {label.name}
-      </CardTitle>
-      <CardBody>
-        <img src={label.labels.medium} alt={label.name} />
-      </CardBody>
-    </Card>
-  )
-}
+    <div className="item-container float-left">
+      <Card>
+        <CardTitle>{name}</CardTitle>
+        <CardBody>
+          <CardImg width="100%" src={medium} alt={name} />
+        </CardBody>
+        <Button onClick={() => handleClick(id)} color='success'>
+          {buttonText}
+        </Button>
+        <InfoModal
+        buttonLabel={buttonLabel}
+        brewery={brewery}
+        description={description}
+        abv={abv}
+        website={website}
+        available={available}
+        />
+      </Card>
+    </div>
+  );
+};
 
 export default BeerLabelItem;

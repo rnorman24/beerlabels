@@ -11,7 +11,7 @@ export default {
   },
   // Gets all saved labels
   getSavedLabels: function() {
-    return axios.get('/api/labels');
+    return axios.get('/api/saved');
   },
   // Deletes the saved label with the given id
   deleteLabel: function(id) {

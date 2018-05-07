@@ -5,8 +5,9 @@ const labelSchema = new Schema({
   // _id: { type: Schema.Types.ObjectId, required: true },
   id: { type: String, required: true },
   name: { type: String, required: true },
-  description: { type: String, required: true },
-  labels: { type: String, required: true },
+  description: { type: String },
+  labels: Schema.Types.Mixed,
+  abv: { type: String },
   brewery: { type: String, required: true },
   website: { type: String, required: true }
   // date: { type: Date, default: Date.now }

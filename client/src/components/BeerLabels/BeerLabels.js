@@ -11,6 +11,7 @@ import {
 import BeerLabelItem from '../BeerLabelItem';
 
 const BeerLabels = ({ labels }) => {
+
   const labelArray = labels.map(label => {
     return (
       <BeerLabelItem 

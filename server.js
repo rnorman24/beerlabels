@@ -4,6 +4,12 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const passport = require('passport');
+const flash = require('connect-flash');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const configDB = require('./config/database.js');
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
