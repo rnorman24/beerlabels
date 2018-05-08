@@ -15,7 +15,8 @@ const BeerLabelItem = ({ name, medium, id, handleClick, buttonText, buttonLabel,
   return (
     <div className="item-container float-left">
       <Card>
-        <CardTitle>{name}</CardTitle>
+        <CardSubtitle><h5>Beer Name:</h5></CardSubtitle>
+        <CardSubtitle>{name}</CardSubtitle>
         <CardBody>
           <CardImg width="100%" src={medium} alt={name} />
         </CardBody>
