@@ -1,27 +1,45 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Pagination } from "reactstrap";
 import BeerLabelItem from "../../components/BeerLabelItem";
 import API from "../../utils/API";
 import SearchBeers from "../../components/SearchBeers";
-import PanginateItem from '../../components/PaginateItem';
+import PaginateItem from '../../components/PaginateItem';
 
 class Home extends Component {
   state = {
+    page: 1,
+    pages: 1,
     labels: [],
-    message: "Search For Beer Labels To Begin!"
+    message: "Search For Beer Labels To Begin!",
+    pagearray : [],
+    searchTerm: ''
   };
 
-  getLabels = (searchTerm, page) => {
-    API.getLabels(searchTerm)
-      .then(res =>
-        // console.log('This is res: ', res.data)
+  getLabels = (searchTerm) => {
+    let pagearray = []
+    API.getLabels(searchTerm, this.state.page)
+      .then(res => {
+        console.log('This is res.numberOfPages: ', res.numberOfPages);
+
         this.setState({
+          pages: res.data.numberOfPages,
+          page: res.data.currentPage,
           labels: res.data,
+          searchTerm: searchTerm,
           message: !res.data.length
             ? "No Beer Labels Found, Try a Different Search Term"
             : ""
         })
-      )
+        console.log(`This is pages: `, this.state.pages);
+        for(let i=1;i<=this.state.pages;i++)
+        {
+           pagearray.push(i)
+        }
+        this.setState({
+          pagearray : pagearray
+        })
+        console.log("The pagearray",this.state.pagearray)
+      })
       .catch(err => console.log(err));
   };
 
@@ -57,7 +75,14 @@ class Home extends Component {
                 buttonLabel='Beer Info'
               />
             ))}
-            <PanginateItem page={1} />
+            {this.state.pagearray.map(page => (
+              <PaginateItem
+              page={page}
+              searchTerm={this.state.searchTerm}
+            
+            />
+            ))}
+            
           </Col>
         </Row>
       </Container>

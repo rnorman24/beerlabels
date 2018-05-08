@@ -1,25 +1,34 @@
-import React, { Component } from 'react';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import React, { Component } from "react";
+import { Pagination, PaginationItem, PaginationLink, Button } from "reactstrap";
+import API from '../../utils/API';
 
 class PaginateItem extends Component {
-  constructor(props) {
-    super(props)
-  }
+  
+    state = {
+      labels: [],
+      page: 1,
+      message: ''
+    };
+  
+
+  buttonClick = () => {
+    API.getLabels(this.props.searchTerm, this.props.page)
+      .then(res =>
+        // console.log('This is res: ', res.data)
+        this.setState({
+          page: res.data.currentPage,
+          labels: res.data,
+          message: !res.data.length
+            ? "No Beer Labels Found, Try a Different Search Term"
+            : ""
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
-      <Pagination>
-        <PaginationItem disabled>
-          <PaginationLink previous href="#" />
-        </PaginationItem>
-        <PaginationItem active>
-          <PaginationLink href="#">
-            {this.props.page}
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink next href="#" />
-        </PaginationItem>
-      </Pagination>
+     <Button onClick={this.buttonClick} >{this.props.page}</Button>
     );
   }
 }

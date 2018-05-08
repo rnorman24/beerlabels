@@ -5,8 +5,10 @@ const apikey = "&key=f1495819604b99d17226c7fa62037548";
 // Defining methods for the LabelController
 module.exports = {
   findAll: function(req, res) {
+    console.log(`This is req: `, req);
+    const page = req.query.page
     const query = req.query.searchTerm;
-    const queryURL = `http://api.brewerydb.com/v2/search?q=${query}&withBreweries=Y&type=beer&p=1${apikey}`;
+    const queryURL = `http://api.brewerydb.com/v2/search?q=${query}&withBreweries=Y&type=beer&p=${page}${apikey}`;
     console.log("This is queryURL: ", queryURL);
     axios
       .get(queryURL)

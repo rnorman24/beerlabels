@@ -6,8 +6,8 @@ export default {
     return axios.get("/api/splashlabel");
   },
   // Gets labels from the dbbrewery API
-  getLabels: function(query) {
-    return axios.get('/api/labels', { params: { searchTerm: query } });
+  getLabels: function(query, page) {
+    return axios.get('/api/labels', { params: { searchTerm: query, page: page } });
   },
   // Gets all saved labels
   getSavedLabels: function() {
