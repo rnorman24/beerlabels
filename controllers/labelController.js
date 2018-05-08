@@ -16,9 +16,10 @@ module.exports = {
         console.log(
           `This is response.data.numberOfPages: ${response.data.numberOfPages}`
         );
-        response = response.data.data;
+        // response = response.data.data;
 
-        return response.filter(label => typeof label.labels !== "undefined");
+        // return response.filter(label => typeof label.labels !== "undefined");
+        return response.data;
       })
       .then(labels => res.json(labels)) // labels.data.data
       .catch(err => res.status(422).json(err));

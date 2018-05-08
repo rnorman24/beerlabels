@@ -19,14 +19,14 @@ class Home extends Component {
     let pagearray = []
     API.getLabels(searchTerm, this.state.page)
       .then(res => {
-        console.log('This is res.numberOfPages: ', res.numberOfPages);
+        console.log('This is res: ', res);
 
         this.setState({
           pages: res.data.numberOfPages,
           page: res.data.currentPage,
-          labels: res.data,
+          labels: res.data.data,
           searchTerm: searchTerm,
-          message: !res.data.length
+          message: !res.data.data.length
             ? "No Beer Labels Found, Try a Different Search Term"
             : ""
         })
@@ -49,7 +49,7 @@ class Home extends Component {
   };
 
   render() {
-    console.log("This is this.state.labels: ", this.state.labels);
+    // console.log("This is this.state.labels: ", this.state.labels);
     return (
       <Container>
         <Row>
@@ -59,7 +59,7 @@ class Home extends Component {
         </Row>
         <Row>
           <Col md="12">
-            {this.state.labels.map(label => (
+            {this.state.labels.filter(label => typeof label.labels !== "undefined").map(label => (
               <BeerLabelItem
                 key={label.id}
                 id={label.id}
@@ -77,6 +77,7 @@ class Home extends Component {
             ))}
             {this.state.pagearray.map(page => (
               <PaginateItem
+              key={page}
               page={page}
               searchTerm={this.state.searchTerm}
             
