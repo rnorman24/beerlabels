@@ -58,7 +58,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Label.findById({ id: req.params.id })
+    console.log(`This is req.params.id: `, ({ id: req.params.id}));
+    db.Label.findOne({ id: req.params.id })
       .then(dbLabel => dbLabel.remove())
       .then(dbLabel => res.json(dbLabel))
       .catch(err => res.status(422).json(err));
