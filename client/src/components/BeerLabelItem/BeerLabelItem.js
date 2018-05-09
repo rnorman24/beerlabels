@@ -23,7 +23,8 @@ const BeerLabelItem = ({
   description,
   abv,
   available,
-  website
+  website,
+  buttonColor
 }) => {
   return (
     <div className="item-container float-left">
@@ -38,7 +39,7 @@ const BeerLabelItem = ({
           <CardImg width="100%" src={medium} alt={name} />
         </CardBody>
         <CardFooter>
-          <Button className='float-right' onClick={() => handleClick(id)} outline color="success">
+          <Button className='float-right' onClick={() => handleClick(id)} outline color={buttonColor}>
             {buttonText}
           </Button>
           <InfoModal

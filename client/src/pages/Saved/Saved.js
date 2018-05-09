@@ -47,6 +47,7 @@ class Saved extends Component {
                 handleClick={this.handleLabelDelete}
                 buttonText="Delete Label"
                 buttonLabel='Beer Info'
+                buttonColor='danger'
               />
             ))}
           </Col>

@@ -78,6 +78,7 @@ class Home extends Component {
                   handleClick={this.handleLabelSave}
                   buttonText="Save Label"
                   buttonLabel="Beer Info"
+                  buttonColor='success'
                 />
               ))}
           </Col>
