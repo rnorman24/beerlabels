@@ -12,12 +12,12 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
+/*
 app.use((req, res, next) => {
   console.log('this req .url:', req.url);
   next();
 })
-
+*/
 // Add routes, both API and view
 app.use(routes);
 
