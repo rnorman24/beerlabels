@@ -31,7 +31,7 @@ class InfoModal extends Component {
           <ModalBody>
           {this.props.description}
           <p><strong>ABV:</strong> {this.props.abv}%</p>
-          <p><strong>Website:</strong> {this.props.website}</p>
+          <p><strong>Website:</strong></p><a href={this.props.website}> {this.props.website}</a>
           </ModalBody>
           
           <ModalFooter>
