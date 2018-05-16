@@ -3,7 +3,6 @@ import { Container, Row, Col } from "reactstrap";
 import BeerLabelItem from "../../components/BeerLabelItem";
 import API from "../../utils/API";
 import SearchBeers from "../../components/SearchBeers";
-// import PaginateItem from "../../components/PaginateItem";
 import Pagination from "react-js-pagination";
 import "./style.css";
 
