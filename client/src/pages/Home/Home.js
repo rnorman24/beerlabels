@@ -9,25 +9,16 @@ import "./style.css";
 class Home extends Component {
   state = {
     activePage: 1,
-    page: 1,
-    pages: 1,
-    current: 1,
     totalResults: 0,
     labels: [],
     message: "Search For Beer Labels To Begin!",
-    pageArray: [],
     searchTerm: ""
   };
 
   getLabels = (searchTerm, page) => {
-    let pageArray = [];
     API.getLabels(searchTerm, page)
       .then(res => {
-        console.log("This is res: ", res);
-
         this.setState({
-          pages: res.data.numberOfPages,
-          page: res.data.currentPage,
           totalResults: res.data.totalResults,
           labels: res.data.data,
           searchTerm: searchTerm,
@@ -35,14 +26,6 @@ class Home extends Component {
             ? "No Beer Labels Found, Try a Different Search Term"
             : ""
         });
-        console.log(`This is pages: `, this.state.pages);
-        for (let i = 1; i <= this.state.pages; i++) {
-          pageArray.push(i);
-        }
-        this.setState({
-          pageArray: pageArray
-        });
-        console.log("The pageArray", this.state.pageArray);
       })
       .catch(err => console.log(err));
   };
