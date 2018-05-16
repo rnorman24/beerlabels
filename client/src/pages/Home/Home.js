@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Pagination } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import BeerLabelItem from "../../components/BeerLabelItem";
 import API from "../../utils/API";
 import SearchBeers from "../../components/SearchBeers";
-import PaginateItem from "../../components/PaginateItem";
+// import PaginateItem from "../../components/PaginateItem";
+import Pagination from "react-js-pagination";
+import "./style.css";
 
 class Home extends Component {
   state = {
+    activePage: 1,
     page: 1,
     pages: 1,
+    current: 1,
+    totalResults: 0,
     labels: [],
     message: "Search For Beer Labels To Begin!",
     pageArray: [],
@@ -24,6 +29,7 @@ class Home extends Component {
         this.setState({
           pages: res.data.numberOfPages,
           page: res.data.currentPage,
+          totalResults: res.data.totalResults,
           labels: res.data.data,
           searchTerm: searchTerm,
           message: !res.data.data.length
@@ -48,6 +54,8 @@ class Home extends Component {
   };
 
   handlePageChange = page => {
+    console.log("The active page is: ", page);
+    this.setState({ activePage: page });
     this.getLabels(this.state.searchTerm, page);
   };
 
@@ -58,6 +66,18 @@ class Home extends Component {
         <Row>
           <Col md="12">
             <SearchBeers getLabels={this.getLabels.bind(this)} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <Pagination
+              hideDisabled={true}
+              activePage={this.state.activePage}
+              itemsCountPerPage={50}
+              totalItemsCount={this.state.totalResults}
+              pageRangeDisplayed={5}
+              onChange={this.handlePageChange}
+            />
           </Col>
         </Row>
         <Row>
@@ -78,23 +98,21 @@ class Home extends Component {
                   handleClick={this.handleLabelSave}
                   buttonText="Save Label"
                   buttonLabel="Beer Info"
-                  buttonColor='success'
+                  buttonColor="success"
                 />
               ))}
           </Col>
         </Row>
         <Row>
           <Col md="12">
-            <Pagination>
-              {this.state.pageArray.map(page => (
-                <PaginateItem
-                  key={page}
-                  page={page}
-                  // searchTerm={this.state.searchTerm}
-                  handleClick={this.handlePageChange}
-                />
-              ))}
-            </Pagination>
+            <Pagination
+              hideDisabled={true}
+              activePage={this.state.activePage}
+              itemsCountPerPage={50}
+              totalItemsCount={this.state.totalResults}
+              pageRangeDisplayed={5}
+              onChange={this.handlePageChange}
+            />
           </Col>
         </Row>
       </Container>
