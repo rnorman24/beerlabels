@@ -1,0 +1,8 @@
+.modal-content {
+  background-color: rgb(224, 222, 222);
+}
+
+.modal-body, .modal-header, .modal-footer {
+  border: 2px solid #c50;
+  border-radius: 2px;
+}

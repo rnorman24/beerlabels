@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import './infoModal.css';
 
 class InfoModal extends Component {
   constructor(props) {
