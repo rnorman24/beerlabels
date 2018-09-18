@@ -11,7 +11,7 @@ const BeerNav = () => (
   <Navbar body
   inverse
   style={{ backgroundColor: "#bf5100", borderColor: "#bf5100" }}>
-    <NavbarBrand href="/">FUN FUN Beer Label Search</NavbarBrand>
+    <NavbarBrand href="/">Beer Label Search</NavbarBrand>
     <Nav className="ml-auto" navbar>
       <NavItem>
         <NavLink href="/saved">Saved Labels</NavLink>
