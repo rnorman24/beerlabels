@@ -4,6 +4,7 @@
   "description": "Project 3",
   "main": "server.js",
   "scripts": {
+    "concurrently": "concurrently",
     "server": "node server.js",
     "client": "node scripts/start-client.js",
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
