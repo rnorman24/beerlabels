@@ -22,7 +22,7 @@ class SearchBeers extends Component {
           <Col>
           <Input
             type="text"
-            placeholder="Search for Beer Labels"
+            placeholder="Search Beer Labels"
             value={this.state.searchTerm}
             onChange={event => this.handleInputChange(event.target.value)}
           />
