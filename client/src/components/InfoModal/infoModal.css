@@ -3,6 +3,6 @@
 }
 
 .modal-body, .modal-header, .modal-footer {
-  border: 2px solid #c50;
+  border: 3px solid #c50;
   border-radius: 2px;
 }
