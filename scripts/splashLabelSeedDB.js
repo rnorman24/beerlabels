@@ -515,6 +515,7 @@ db.SplashLabel
   .remove({})
   .then(() => db.SplashLabel.collection.insertMany(splashLabelSeed))
   .then(data => {
+    console.log(data);
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);
   })
