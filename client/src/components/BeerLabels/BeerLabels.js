@@ -1,13 +1,5 @@
-import React, { Component } from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
-} from "reactstrap";
+import React from "react";
+
 import BeerLabelItem from '../BeerLabelItem';
 
 const BeerLabels = ({ labels }) => {
