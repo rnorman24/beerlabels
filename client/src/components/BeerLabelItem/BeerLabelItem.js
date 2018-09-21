@@ -9,6 +9,7 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
+
 import InfoModal from "../InfoModal";
 import "./BeerLabelItem.css";
 
